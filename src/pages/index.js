@@ -9,7 +9,7 @@ export default function Index() {
     const data = useStaticQuery(
         graphql`
         query MyQuery {
-            videos: allContentfulVideo {
+            videos: allContentfulVideo(sort: {fields: [releaseYear], order: DESC}) {
               nodes {
                 title
                 artDirector

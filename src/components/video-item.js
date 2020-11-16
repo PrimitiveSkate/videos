@@ -1,6 +1,6 @@
 import propTypes from 'prop-types';
 import React from 'react';
-import {Box, Image, Text, Flex, Divider,List, ListItem, SimpleGrid} from '@chakra-ui/react';
+import {Box, Image, Text, Flex, Divider,SimpleGrid} from '@chakra-ui/react';
 
 const VideoItem = props => {
     const {data} = props;
@@ -19,21 +19,16 @@ const VideoItem = props => {
                         </Text>
                     </SimpleGrid>
                     <Divider marginBottom='10px'/>
-                    
-                    <SimpleGrid columns='2'>
-                        <Text as='p' color='#666'>Directors</Text>
-                        <Text as='p' textAlign='right'>{data.directors}</Text>
-                    </SimpleGrid>
-                    <Divider margin='10px'/>
-                    <SimpleGrid columns='2'>
-                        <Text as='p' color='#666'>Featuring</Text>
-                       
-                        {data.chapters.map((chapter, index) => {
-                            return <Text as='p' textAlign='right' key={index}>{chapter}</Text>;
-                        })}
-                        
-                    </SimpleGrid> 
-
+                    {
+                        data.chapters.map((item) => {
+                            const chapterArr = item.split(' - ');
+                            const chapterName = chapterArr[0];
+                            const timestamp = chapterArr[1];
+                            return (
+                                <Text>{chapterName}</Text> 
+                            );
+                        })
+                    }
                 </Box>
             </Flex>
         </>
