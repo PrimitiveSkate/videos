@@ -1,46 +1,36 @@
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
-import { Flex, Divider, Image } from "@chakra-ui/react";
+import { Flex} from "@chakra-ui/react";
 import {Helmet} from 'react-helmet';
-import Logo from '../assets/primitive_video.svg';
+import Header from '../components/header';
 import Videos from '../components/videos';
 
 export default function Index() {
     const data = useStaticQuery(
         graphql`
-        query MyQuery {
-            videos: allContentfulVideo(sort: {fields: [releaseYear], order: DESC}) {
-              nodes {
-                title
-                artDirector
-                chapters
-                contentful_id
-                coverArt {
-                  description
-                  id
-                  file {
-                    url
-                  }
-                  title
+            query MyQuery {
+                videos: allContentfulVideo(sort: {fields: [releaseYear], order: DESC}) {
+                    nodes {
+                    title
+                    contentful_id
+                    coverArt {
+                        description
+                        id
+                        file {
+                        url
+                        }
+                        title
+                    }
+                    id
+                    releaseYear
+                    videoType
+                    videoDescription {
+                        videoDescription
+                    }
+                    slugs
+                    }
                 }
-                directors
-                executiveProducers
-                filmers
-                id
-                info {
-                  raw
-                }
-                music
-                releaseYear
-                stillPhotography
-                videoType
-                videoUrl {
-                  videoUrl
-                  id
-                }
-              }
             }
-          }
         `
     );
     return (
@@ -53,13 +43,8 @@ export default function Index() {
                     content='An archive of Primitive videos throughout the years!'
                 />
             </Helmet>
-            <Flex padding="20px" >
-                <Flex bg='#fff' alignItems='center' flexDir='column' w="100%" >
-                    <Image src={Logo} w='300px' alignItems='center' marginBottom="25px"/>
-                    <Divider />
-                </Flex>
-            </Flex>
-            <Flex width="100%" padding="0px 20px" > 
+            <Header />
+            <Flex width="100%" padding="0px 20px" marginTop="25px" > 
                 <Videos data={data.videos} />
             </Flex>
             
