@@ -4,11 +4,13 @@ import propTypes from 'prop-types';
 import {SimpleGrid} from '@chakra-ui/react';
 
 const Videos = props => {
+    
     const {data} = props;
+    console.log(data);
     return (
         <>
-            <SimpleGrid columns={['1','1','3','4']} spacing={10}>
-                {data.nodes.map((video, index) => {
+            <SimpleGrid w='100%' columns={['2','2','3','4']} spacing={5}>
+                {data.videoItem.map((video, index) => {
                     return <VideoItem key={index} data={video} />;
                 })}
             </SimpleGrid>

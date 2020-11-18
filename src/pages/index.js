@@ -6,28 +6,21 @@ import Header from '../components/header';
 import Videos from '../components/videos';
 
 export default function Index() {
+    
     const data = useStaticQuery(
         graphql`
             query MyQuery {
-                videos: allContentfulVideo(sort: {fields: [releaseYear], order: DESC}) {
-                    nodes {
-                    title
-                    contentful_id
-                    coverArt {
-                        description
+                videos: contentfulVideoList {
+                    videoItem {
                         id
-                        file {
-                        url
-                        }
+                        releaseYear
                         title
-                    }
-                    id
-                    releaseYear
-                    videoType
-                    videoDescription {
-                        videoDescription
-                    }
-                    slugs
+                        slugs
+                        coverArt {
+                            fluid(maxWidth: 960) {
+                                ...GatsbyContentfulFluid
+                            }
+                        }
                     }
                 }
             }

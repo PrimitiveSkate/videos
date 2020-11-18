@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
+const path = require(`path`);
+
 module.exports = {
     siteMetadata: {
         title: `Primitive Film Archive`,
@@ -10,6 +12,8 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
+        `gatsby-transformer-sharp`, 
+        `gatsby-plugin-sharp`,
         {
             resolve: "@chakra-ui/gatsby-plugin",
             options: {
