@@ -3,11 +3,10 @@ import {graphql, useStaticQuery} from 'gatsby';
 import VideoItem from './video-item';
 import {SimpleGrid} from '@chakra-ui/react';
 
-export default function Videos(){
+export default function RandomVids(){
     const data = useStaticQuery(
-       
         graphql`
-            query MyQuery {
+            query related {
                 videos: contentfulVideoList {
                     videoItem {
                         id
@@ -24,10 +23,14 @@ export default function Videos(){
             }
         `
     );
+    // Shuffle array
+    const shuffled = data.videos.videoItem.sort(() => 0.5 - Math.random());
+    // Get sub-array of first n elements after shuffled
+    let selected = shuffled.slice(0, 4);
     return(
         <>
            <SimpleGrid w='100%' columns={['2','2','3','4']} spacing={5}>
-                {data.videos.videoItem.map((video, index) => {
+                {selected.map((video, index) => {
                     return <VideoItem key={index} data={video} />;
                 })}
             </SimpleGrid>

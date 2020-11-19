@@ -3,8 +3,8 @@ import YouTube from 'react-youtube';
 import {Helmet} from 'react-helmet';
 import Header from '../components/header';
 import {graphql, Link as GatsbyLink} from 'gatsby';
-import {AspectRatio,Box,Button, Divider,Grid, GridItem, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
-
+import {AspectRatio,Box,Button, Divider, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
+import RandomVids from '../components/random-videos';
 
 const VideoPage = (props) => {
     const player = useRef();
@@ -19,6 +19,7 @@ const VideoPage = (props) => {
     const youtubeReady = (event) => {
         player.current = event.target;
     }    
+    
     return (
         <>
             <Helmet>
@@ -31,9 +32,9 @@ const VideoPage = (props) => {
             </Helmet>
             <Header />
             
-            <Flex position='relative' h='100vh' w='100%'  backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
+            <Flex position='relative'  w='100%' paddingBttom  backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
                 
-                <Flex justifyContent='center'   w='100%' h='100vh'  fontFamily='Oswald'  color='#000' backgroundImage='linear-gradient(0deg, rgba(255,255,255,1) 69%, rgba(255,255,255,0) 85%)'>
+                <Flex justifyContent='center'   w='100%'   fontFamily='Oswald'  color='#000' backgroundImage='linear-gradient(0deg, rgba(255,255,255,1) 69%, rgba(255,255,255,0) 85%)'>
                     
                     <Box w={['95%','95%','75%','75%']} marginTop='20vh'>
                         <Button pos='absolute' top='25px ' fontWeight='normal' textTransform='uppercase' as={GatsbyLink} to='../../' background='lightgrey'>Back to Videos</Button>
@@ -46,9 +47,9 @@ const VideoPage = (props) => {
                             {directors && ` | Directed By: ${directors.map(director => director).join(', ')}`}
                         </Text>
                        
-                        <Divider borderColor='#777' marginBottom='10px' />
-
-                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' paddingBottom={['25px','25px','50px','50px']}>
+                        
+            <Divider borderColor='#777' marginBottom='10px' />
+                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' >
                             <AspectRatio ratio={16 / 9} >
                                 <YouTube videoId={youtubeId} opts={opts} onReady={youtubeReady}  />
                             </AspectRatio>
@@ -69,7 +70,7 @@ const VideoPage = (props) => {
                                 Chapters:
                             </Text>
                             {chapters  
-                                ?<List marginBottom='50px'>
+                                ?<List >
                                     {chapters.map((chapter, index) => {
                                         const chapterArr = chapter.split(' - ');
                                         const chapterName = chapterArr[0];
@@ -97,14 +98,26 @@ const VideoPage = (props) => {
                             }
                         </Box>
                         
+                        
                     </Box>
                 </Flex>
+                
             </Flex>
+            <Flex display='inline-flex' justifyContent='center' w='100%' fontFamily='Oswald' marginTop='25px' paddingBottom='25px'>
+                
+                <Box w={['95%','95%','75%','75%']} >
+                    <Text as='h2' marginBottom='5px' fontSize='1.4rem'>You May Also Like:</Text>
+                    <RandomVids />
+                </Box>
+            </Flex>
+
+           
         </>
     )
 }
 
 export const pageQuery = graphql`
+
     query VideoQuery($id: String!) {
         contentfulVideo(id: {eq: $id}) {
             artDirector
@@ -130,7 +143,7 @@ export const pageQuery = graphql`
                 videoUrl
             }
             slugs
-        }
+        }       
     }
 `
 
