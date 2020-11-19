@@ -69,7 +69,7 @@ const VideoPage = (props) => {
                                 Chapters:
                             </Text>
                             {chapters  
-                                ?<List>
+                                ?<List marginBottom='50px'>
                                     {chapters.map((chapter, index) => {
                                         const chapterArr = chapter.split(' - ');
                                         const chapterName = chapterArr[0];
