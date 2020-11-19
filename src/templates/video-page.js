@@ -5,6 +5,8 @@ import Header from '../components/header';
 import {graphql, Link as GatsbyLink} from 'gatsby';
 import {AspectRatio,Box,Button, Divider, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
 import RandomVids from '../components/random-videos';
+import Favicon from '../assets/favicon.webp';
+import OgImage from '../assets/ogImage.jpg';
 
 const VideoPage = (props) => {
     const player = useRef();
@@ -29,6 +31,12 @@ const VideoPage = (props) => {
                     name='description'
                     content={videoDescription.videoDescription}
                 />
+                <meta 
+                    property='og:image' 
+                    content={OgImage} 
+                />
+                <link rel="shortcut icon" href={Favicon} />
+
             </Helmet>
             <Header />
             

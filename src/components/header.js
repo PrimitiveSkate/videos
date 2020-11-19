@@ -6,6 +6,7 @@ import Logo from '../assets/primitive_video.svg';
 const Header = () =>{
     return (
         <>
+        
             <Flex minHeight='100px' fontFamily='Oswald' borderBottom='1px solid #999'>
                 <Flex bg='rgba(255,255,255,0.7)' alignItems='center' justifyContent='center' flexDir='column' w="100%" paddingBottom={['25px','25px', '0', '0']} >
                     <Link href='/' title="Home">

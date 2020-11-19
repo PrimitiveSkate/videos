@@ -4,6 +4,8 @@ import { Flex} from "@chakra-ui/react";
 import {Helmet} from 'react-helmet';
 import Header from '../components/header';
 import Videos from '../components/videos';
+import Favicon from '../assets/favicon.webp';
+import OgImage from '../assets/ogImage.jpg';
 
 export default function Index() {
     
@@ -16,6 +18,12 @@ export default function Index() {
                     name='description'
                     content='An archive of Primitive videos throughout the years!'
                 />
+                <meta 
+                    property='og:image' 
+                    content={OgImage} 
+                />
+                <link rel="shortcut icon" href={Favicon} />
+
             </Helmet>
             <Header />
             <Flex width="100%" padding="0px 20px" marginTop="25px" > 
