@@ -18,10 +18,7 @@ const VideoPage = (props) => {
 
     const youtubeReady = (event) => {
         player.current = event.target;
-    }
-
-    console.log(props.data);
-    
+    }    
     return (
         <>
             <Helmet>
