@@ -39,7 +39,7 @@ const VideoPage = (props) => {
                 <Flex justifyContent='center'   w='100%' h='100vh'  fontFamily='Oswald'  color='#000' backgroundImage='linear-gradient(0deg, rgba(255,255,255,1) 69%, rgba(255,255,255,0) 85%)'>
                     
                     <Box w={['95%','95%','75%','75%']} marginTop='20vh'>
-                        <Button pos='absolute' top='25px ' textTransform='uppercase' as={GatsbyLink} to='../../' colorScheme='blue'>Back to Videos</Button>
+                        <Button pos='absolute' top='25px ' fontWeight='normal' textTransform='uppercase' as={GatsbyLink} to='../../' background='lightgrey'>Back to Videos</Button>
                         <Text as='h1' fontSize='2.5rem'>{title}</Text>
                         <Divider borderColor='#777' />
                         
