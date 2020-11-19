@@ -43,7 +43,7 @@ const VideoPage = (props) => {
                         <Text as='h1' fontSize='2.5rem'>{title}</Text>
                         <Divider borderColor='#777' />
                         
-                        <Text as='p' fontFamily='courier'>
+                        <Text as='p'>
                             {videoType} 
                             {releaseYear && ` | Release Date: ${releaseYear }  `} 
                             {directors && ` | Directed By: ${directors.map(director => director).join(', ')}`}
@@ -51,7 +51,7 @@ const VideoPage = (props) => {
                        
                         <Divider borderColor='#777' marginBottom='10px' />
 
-                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px'>
+                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' paddingBottom={['25px','25px','50px','50px']}>
                             <AspectRatio ratio={16 / 9} >
                                 <YouTube videoId={youtubeId} opts={opts} onReady={youtubeReady}  />
                             </AspectRatio>
@@ -76,6 +76,7 @@ const VideoPage = (props) => {
                                     {chapters.map((chapter, index) => {
                                         const chapterArr = chapter.split(' - ');
                                         const chapterName = chapterArr[0];
+                                        const chapterTimeStamp = chapterArr[1];
                                         const chapterTime = chapterArr[1].split(':');
                                         const chapterMins = parseInt(chapterTime[0]);
                                         const chapterSecs = parseInt(chapterTime[1]);
@@ -83,13 +84,13 @@ const VideoPage = (props) => {
                                         const timeInSecs = (chapterMins * 60) + chapterSecs ;
                                         
                                         return (
-                                            <ListItem cursor='pointer' className='timeStamp'  key={index} p='5px' borderBottom='solid 1px #e9e9e9'>
-                                                <Link as='button' _focus={{ boxShadow: 'none' }}  onClick={() => {
+                                            <ListItem cursor='pointer' className='timeStamp'  key={index} p={['0px','0px','5px','5px']} borderBottom='solid 1px #e9e9e9'>
+                                                <Link textTransform='capitalize' pos='relative' as='button' _focus={{ boxShadow: 'none' }}  onClick={() => {
                                                     if(player.current){
                                                         player.current.seekTo(timeInSecs);
                                                     }
                                                 }} display='inline-flex' boxSize='full'>
-                                                    {chapterName}  
+                                                    {chapterName} <Box pos='absolute' right='0px' color='#999' top='0px'>{chapterTimeStamp}</Box>
                                                 </Link>
                                             </ListItem>
                                         )
