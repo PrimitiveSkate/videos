@@ -15,6 +15,39 @@ module.exports = {
         `gatsby-transformer-sharp`, 
         `gatsby-plugin-sharp`,
         {
+            resolve: `gatsby-plugin-facebook-pixel`,
+            options: {
+              pixelId: "164292004415502",
+            }
+        },
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+              // The property ID; the tracking code won't be generated without it
+              trackingId: "UA-49338482-1",
+              // Defines where to place the tracking script - `true` in the head and `false` in the body
+              head: false,
+              cookieDomain: "videos.primitiveskate.com",
+            }
+        },
+        {
+            resolve: "gatsby-plugin-google-tagmanager",
+            options: {
+              id: "GTM-MZTQ767",
+        
+              // Include GTM in development.
+              //
+              // Defaults to false meaning GTM will only be loaded in production.
+              includeInDevelopment: false,
+        
+              // datalayer to be set before GTM is loaded
+              // should be an object or a function that is executed in the browser
+              //
+              // Defaults to null
+              defaultDataLayer: { platform: "videosLibrary" }
+            }
+        },
+        {
             resolve: "@chakra-ui/gatsby-plugin",
             options: {
               /**
