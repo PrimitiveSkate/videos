@@ -11,7 +11,7 @@ const FeaturedItem = props => {
         <>
             <Flex flexGrow='1' justifyContent='center' >
                 
-                    <Box fontFamily='Oswald' pos='relative'  width={['100%','100%','65%','65%']} pos='relative'>
+                    <Box fontFamily='Oswald' pos='relative'  width={['95%','95%','90%','65%']} pos='relative'>
                         <Img 
                             fluid={data.coverArt.fluid} 
                             key={data.coverArt.fluid.src}
@@ -25,7 +25,7 @@ const FeaturedItem = props => {
                             </Box>
                             <Box display='inline-flex'>
                                 <Button as={GatsbyLink} p='0 50px' fontWeight='normal' colorScheme='yellow' to={`/video/${data.slugs}`}>
-                                    Watch Now
+                                    WATCH NOW
                                 </Button>
                             </Box>
                         </Box>
