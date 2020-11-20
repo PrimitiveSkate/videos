@@ -27,9 +27,9 @@ export default function Index() {
 
             </Helmet>
             <Header />
-            <Flex width="100%" flexDirection='column' padding="0px 20px" marginTop="25px" > 
+            <Flex width="100%" flexDirection='column' padding="0px" > 
                 <FeaturedVideo />
-                <Videos />
+                <Videos  />
             </Flex>
             
         </>

@@ -25,7 +25,7 @@ export default function Videos(){
     );
     return(
         <>
-           <SimpleGrid w='100%' columns={['2','2','3','4']} spacing={5}>
+           <SimpleGrid w='100%' columns={['2','2','3','4']} spacing={5} padding={['10px','10px','25px','25px']}>
                 {data.videos.videoItem.map((video, index) => {
                     return <VideoItem key={index} data={video} />;
                 })}
