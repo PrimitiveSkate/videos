@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex} from "@chakra-ui/react";
+import { Flex, Box} from "@chakra-ui/react";
 import {Helmet} from 'react-helmet';
 import Header from '../components/header';
 import Videos from '../components/videos';
@@ -27,9 +27,11 @@ export default function Index() {
 
             </Helmet>
             <Header />
-            <Flex width="100%" flexDirection='column' padding="0px" > 
+            <Flex width="100%" flexDirection='column' padding="0px" justifyContent='center'> 
                 <FeaturedVideo />
-                <Videos  />
+                <Box padding='0px 25px 50px 25px '>
+                    <Videos  />
+                </Box>
             </Flex>
             
         </>
