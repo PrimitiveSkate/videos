@@ -11,11 +11,14 @@ const VideoItem = props => {
             <Flex flexGrow='1'>
                 <Link _hover={ { textDecoration:'none' }} href={`/video/${data.slugs}`} display='inline-flex' width='100%' textTransform='uppercase'>
                     <Box fontFamily='Oswald' pos='relative' width='100%'>
-                        <Img 
-                            fluid={data.coverArt.fluid} 
-                            key={data.coverArt.fluid.src}
-                            alt={data.title}
-                        />
+                        <Box opacity='0.7' _hover={ {opacity:'1'}} width='100%' >
+                            <Img 
+                                fluid={data.coverArt.fluid} 
+                                key={data.coverArt.fluid.src}
+                                alt={data.title}
+                                
+                            />
+                        </Box>
                         <Text as="h1" fontSize={['0.8em','0.9em','1.3em','1.3em']} fontFamily='Oswald' w='100%'>
                             {data.title}
                         </Text>
