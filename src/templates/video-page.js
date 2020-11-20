@@ -4,7 +4,7 @@ import {Helmet} from 'react-helmet';
 import Header from '../components/header';
 import {graphql, Link as GatsbyLink} from 'gatsby';
 import {AspectRatio,Box,Button, Divider, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
-import RandomVids from '../components/random-videos';
+import Videos from '../components/videos';
 import Favicon from '../assets/favicon.webp';
 import OgImage from '../assets/ogImage.jpg';
 
@@ -115,7 +115,7 @@ const VideoPage = (props) => {
                 
                 <Box w={['95%','95%','75%','75%']} >
                     <Text as='h2' marginBottom='5px' fontSize='1.4rem'>You May Also Like:</Text>
-                    <RandomVids />
+                    <Videos />
                 </Box>
             </Flex>
 
