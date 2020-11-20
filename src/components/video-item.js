@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 import Img from "gatsby-image";
-import {Box, Text, Flex, Divider,Link} from '@chakra-ui/react';
+import {Box, Text, Flex,Link} from '@chakra-ui/react';
 
 const VideoItem = props => {
     

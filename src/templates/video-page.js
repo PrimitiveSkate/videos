@@ -56,7 +56,7 @@ const VideoPage = (props) => {
                         </Text>
                        
                         
-            <Divider borderColor='#777' marginBottom='10px' />
+                         <Divider borderColor='#777' marginBottom='10px' />
                         <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' >
                             <AspectRatio ratio={16 / 9} >
                                 <YouTube videoId={youtubeId} opts={opts} onReady={youtubeReady}  />

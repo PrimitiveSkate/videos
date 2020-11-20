@@ -4,6 +4,7 @@ import { Flex} from "@chakra-ui/react";
 import {Helmet} from 'react-helmet';
 import Header from '../components/header';
 import Videos from '../components/videos';
+import FeaturedVideo from '../components/featured-video';
 import Favicon from '../assets/favicon.webp';
 import OgImage from '../assets/ogImage.jpg';
 
@@ -26,7 +27,8 @@ export default function Index() {
 
             </Helmet>
             <Header />
-            <Flex width="100%" padding="0px 20px" marginTop="25px" > 
+            <Flex width="100%" flexDirection='column' padding="0px 20px" marginTop="25px" > 
+                <FeaturedVideo />
                 <Videos />
             </Flex>
             
