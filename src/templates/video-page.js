@@ -6,7 +6,6 @@ import {graphql, Link as GatsbyLink} from 'gatsby';
 import {AspectRatio,Box,Button, Divider, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
 import Videos from '../components/videos';
 import Favicon from '../assets/favicon.webp';
-import OgImage from '../assets/ogImage.jpg';
 
 const VideoPage = (props) => {
     const player = useRef();
@@ -33,7 +32,7 @@ const VideoPage = (props) => {
                 />
                 <meta 
                     property='og:image' 
-                    content={OgImage} 
+                    content={coverArt.file.url}
                 />
                 <link rel="shortcut icon" href={Favicon} />
 
