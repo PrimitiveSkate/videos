@@ -61,8 +61,8 @@ const VideoPage = (props) => {
                                             playerOptions: { 
                                                 controls: true,
                                                 responsive: true,
-                                                title: false
-                                            
+                                                title: false,
+                                                autoplay: true  
                                             }
                                         }
                                     }}
