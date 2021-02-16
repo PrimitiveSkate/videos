@@ -1,6 +1,6 @@
 import React,{useRef} from 'react';
-import YouTube from 'react-youtube';
 import {Helmet} from 'react-helmet';
+import ReactPlayer from 'react-player';
 import Header from '../components/header';
 import {graphql, Link as GatsbyLink} from 'gatsby';
 import {AspectRatio,Box,Button, Divider, Flex, Link, List, ListItem, Text } from '@chakra-ui/react';
@@ -8,18 +8,9 @@ import Videos from '../components/videos';
 import Favicon from '../assets/favicon.webp';
 
 const VideoPage = (props) => {
-    const player = useRef();
     const {title,releaseYear,coverArt,executiveProducers,music,videoDescription,directors,filmers, chapters, videoType, artDirector,videoUrl,stillPhotography} = props.data.contentfulVideo;
-    const youtubeId = videoUrl.videoUrl.split('=').pop();
-
-    const opts = {
-        height: '100%',
-        width: '100%',
-    }
-
-    const youtubeReady = (event) => {
-        player.current = event.target;
-    }    
+    const player = useRef();
+      
     
     return (
         <>
@@ -39,7 +30,7 @@ const VideoPage = (props) => {
             </Helmet>
             <Header />
             
-            <Flex position='relative'  w='100%' paddingBttom  backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
+            <Flex position='relative'  w='100%'   backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
                 
                 <Flex justifyContent='center'   w='100%'   fontFamily='Oswald'  color='#000' backgroundImage='linear-gradient(0deg, rgba(255,255,255,1) 69%, rgba(255,255,255,0) 85%)'>
                     
@@ -58,7 +49,23 @@ const VideoPage = (props) => {
                          <Divider borderColor='#777' marginBottom='10px' />
                         <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' >
                             <AspectRatio ratio={16 / 9} >
-                                <YouTube videoId={youtubeId} opts={opts} onReady={youtubeReady}  />
+                                
+                                <ReactPlayer
+                                    ref={player}
+                                    width="100%"
+                                    height="100%"
+                                    url={videoUrl.videoUrl}
+                                    config={{
+                                        vimeo: {
+                                            playerOptions: { 
+                                                controls: true,
+                                                responsive: true,
+                                                title: false,
+                                                autoplay: true  
+                                            }
+                                        }
+                                    }}
+                                />
                             </AspectRatio>
                             <Text marginBottom='25px' marginTop='25px'  as='p'  >
                                 {videoDescription.videoDescription}
@@ -91,9 +98,7 @@ const VideoPage = (props) => {
                                         return (
                                             <ListItem cursor='pointer' className='timeStamp'  key={index} p={['0px','0px','5px','5px']} borderBottom='solid 1px #e9e9e9'>
                                                 <Link textTransform='capitalize' pos='relative' as='button' _focus={{ boxShadow: 'none' }}  onClick={() => {
-                                                    if(player.current){
-                                                        player.current.seekTo(timeInSecs);
-                                                    }
+                                                    player.current.seekTo(timeInSecs);
                                                 }} display='inline-flex' boxSize='full'>
                                                     {chapterName} <Box pos='absolute' right='0px' color='#999' top='0px'>{chapterTimeStamp}</Box>
                                                 </Link>
