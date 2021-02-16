@@ -33,7 +33,7 @@ export default function FeaturedVideo(){
     );
     let vidArr = [];
     vidArr.push(data.video.featuredVideo);
-    console.log(vidArr);
+    
     return(
         <>
            <Box display='inline-flex' w='100%'  backgroundImage={`url(${BackgrounImg})`} p='25px 0px'>

@@ -63,6 +63,12 @@ const VideoPage = (props) => {
                                                 title: false,
                                                 autoplay: true  
                                             }
+                                        },
+                                        youtube: {
+                                            playerVars: {
+                                                autoplay: 1,
+                                                controls: 1
+                                            }
                                         }
                                     }}
                                 />
