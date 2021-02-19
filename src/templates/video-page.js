@@ -47,19 +47,18 @@ const VideoPage = (props) => {
                        
                         
                          <Divider borderColor='#777' marginBottom='10px' />
-                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px' >
-                            
+                        <Box w={['100%','100%','100%','75%']} float='left' paddingTop='8px'  >
+                            <AspectRatio ratio={16 / 9} bgColor="#000">
                                 
                                 <ReactPlayer
                                     ref={player}
                                     width="100%"
-                                    height="100%"
+                                    height="auto"
                                     url={videoUrl.videoUrl}
                                     config={{
                                         vimeo: {
                                             playerOptions: { 
                                                 controls: true,
-                                                responsive: true,
                                                 title: false,
                                                 autoplay: true  
                                             }
@@ -67,12 +66,13 @@ const VideoPage = (props) => {
                                         youtube: {
                                             playerVars: {
                                                 autoplay: 1,
-                                                controls: 1
+                                                controls: 1,
+                                                responsive: true,
                                             }
                                         }
                                     }}
                                 />
-                            
+                            </AspectRatio>
                             <Text marginBottom='25px' marginTop='25px'  as='p'  >
                                 {videoDescription.videoDescription}
                             </Text>
