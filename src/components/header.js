@@ -17,19 +17,18 @@ const Header = () =>{
     const index = useRef();
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-    const [searching, setSearching] = useState(false);
+    
     const getOrCreateIndex = () =>
     index.current
       ? index.current
       : // Create an elastic lunr index and hydrate with graphql query results
         Index.load(data.siteSearchIndex.index)
     const clearSearch = () => {
-        setSearching(false);
+        
         setResults([]);
         setQuery('');
     }
     const search = evt => {
-        setSearching(true);
         const query = evt.target.value
         index.current = getOrCreateIndex()
         setQuery(query)
@@ -48,7 +47,7 @@ const Header = () =>{
                         <InputGroup>
                             <InputLeftElement 
                                 children={
-                                    searching ? (
+                                    query !== '' ? (
                                         <CloseIcon color="gray.300" onClick={ clearSearch } value='clear' _hover={ { cursor:'pointer' }} />
                                       ) : (
                                         <SearchIcon color="gray.300" />
