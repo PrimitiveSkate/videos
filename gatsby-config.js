@@ -15,6 +15,27 @@ module.exports = {
         `gatsby-transformer-sharp`, 
         `gatsby-plugin-sharp`,
         {
+          resolve: '@gatsby-contrib/gatsby-plugin-elasticlunr-search',
+          options: {
+            // Fields to index
+            fields: ['title', 'chapters', 'slugs', 'videoType', 'videoDescription', 'releaseYear', 'videoTags', 'filmers', 'coverArt'],
+            // How to resolve each field's value for a supported node type
+            resolvers: {
+              ContentfulVideo: {
+                title: node => node.title,
+                chapters: node => node.chapters,
+                slugs: node => node.slugs,
+                videoType: node => node.videoType,
+                videoDescription: node => node.videoDescription,
+                releaseYear: node => node.releaseYear,
+                videoTags: node => node.videoTags,
+                filmers: node => node.filmers,
+                coverArt: (node, getNode) => getNode(node.coverArt___NODE)
+              }
+            }
+          }
+        },
+        {
             resolve: `gatsby-plugin-facebook-pixel`,
             options: {
               pixelId: "164292004415502",

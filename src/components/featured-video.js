@@ -36,7 +36,7 @@ export default function FeaturedVideo(){
     
     return(
         <>
-           <Box display='inline-flex' w='100%'  backgroundImage={`url(${BackgrounImg})`} p='25px 0px'>
+           <Box display='inline-flex' w='100%'  backgroundImage={`url(${BackgrounImg})`} p='25px 0px' marginTop={['200px','200px','100px','100px']}>
                 {vidArr.map((video, index) => {
                     return <FeaturedItem key={index} data={video} />;      
                 })}

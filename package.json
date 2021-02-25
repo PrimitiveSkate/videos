@@ -15,6 +15,8 @@
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.4.2",
+    "elasticlunr": "^0.9.5",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.5.0",

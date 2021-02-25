@@ -6,7 +6,7 @@ import {SimpleGrid} from '@chakra-ui/react';
 export default function Videos(){
     const data = useStaticQuery(
         graphql`
-            query MyQuery {
+            query VideosQuery {
                 videos: contentfulVideoList {
                     videoItem {
                         id
