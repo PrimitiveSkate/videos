@@ -33,7 +33,6 @@ const Header = () =>{
             .map(({ ref }) => index.current.documentStore.getDoc(ref))
         )
     }
-    console.log(results)
     return (
         <>
             <Flex  fontFamily='Oswald' >
