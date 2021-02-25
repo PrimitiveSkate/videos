@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Index } from "elasticlunr";
 import {Link as GatsbyLink} from 'gatsby';
-import { AspectRatio, Box, Input, Flex, Button, Image, Link, List, ListItem, Heading } from "@chakra-ui/react";
+import { SearchIcon, CloseIcon } from '@chakra-ui/icons'
+import { AspectRatio, Box, Input,InputGroup, InputLeftElement, Flex, Button, Image, Link, List, ListItem, Heading } from "@chakra-ui/react";
 import Logo from '../assets/primitive_video.svg';
 
 const Header = () =>{
@@ -12,17 +13,23 @@ const Header = () =>{
                 index
             }
         }
-    `)
+    `) 
     const index = useRef();
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    const [searching, setSearching] = useState(false);
     const getOrCreateIndex = () =>
     index.current
       ? index.current
       : // Create an elastic lunr index and hydrate with graphql query results
         Index.load(data.siteSearchIndex.index)
-
+    const clearSearch = () => {
+        setSearching(false);
+        setResults([]);
+        setQuery('');
+    }
     const search = evt => {
+        setSearching(true);
         const query = evt.target.value
         index.current = getOrCreateIndex()
         setQuery(query)
@@ -38,7 +45,19 @@ const Header = () =>{
             <Flex  fontFamily='Oswald' >
                 <Flex minHeight='100px'  bg='rgba(255,255,255,0.9)' pos='fixed' borderBottom='1px solid #999' w='100%' alignItems='center' zIndex='1' justifyContent='center' flexDir='column' w="100%" paddingBottom={['25px','25px', '0', '0']} >
                     <Box pos={['relative','relative','absolute','absolute']} w={['100%', '100%', '30%', '30%']} top={['10px','10px','auto','auto']} left={['0','0','20px','20px']} padding="0px 25px 0px 25px"  >
-                        <Input type="search" background='#fff' marginBottom={['20px','20px', '0', '0']} value={query} onChange={search}  placeholder="Search Videos"/>
+                        <InputGroup>
+                            <InputLeftElement 
+                                children={
+                                    searching ? (
+                                        <CloseIcon color="gray.300" onClick={ clearSearch } value='clear' _hover={ { cursor:'pointer' }} />
+                                      ) : (
+                                        <SearchIcon color="gray.300" />
+                                      )
+                                    
+                                }
+                            />
+                            <Input id='searchVideo' background='#fff' marginBottom={['20px','20px', '0', '0']} value={query} onChange={search}  placeholder="Search Videos"/>
+                        </InputGroup>
                         <Box position='absolute' width='90%' maxHeight='50vh' overflowY='scroll' overflowX='hidden' background='white' zIndex="1111" borderRadius="5px" boxShadow="0 0 2px #999">
                             <List>
                                 {results.map(result => (
