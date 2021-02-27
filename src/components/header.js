@@ -23,8 +23,8 @@ const Header = () =>{
       ? index.current
       : // Create an elastic lunr index and hydrate with graphql query results
         Index.load(data.siteSearchIndex.index)
+    
     const clearSearch = () => {
-        
         setResults([]);
         setQuery('');
     }
