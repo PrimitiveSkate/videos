@@ -12,6 +12,7 @@ export default function HomePage() {
     return (
         <>
             <Helmet>
+                <html lang="en" />
                 <meta charSet='utf-8' />
                 <title>Primitive Video Archive</title>
                 <meta 
@@ -26,7 +27,7 @@ export default function HomePage() {
 
             </Helmet>
             <Header variant="outline" />
-            <Flex width="100%" flexDirection='column' padding="0px" justifyContent='center' > 
+            <Flex width="100%" flexDirection='column' as='main' padding="0px" justifyContent='center' > 
                 <FeaturedVideo  />
                 
                 <Box padding='0px 25px 50px 25px '>

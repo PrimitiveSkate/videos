@@ -17,12 +17,8 @@ const FeaturedItem = props => {
                             key={data.coverArt.fluid.src}
                             alt={data.title}
                         />
-                        <Box pos='absolute' background='rgba(0,0,0,0.5)' top='0' left='0' boxSize='full' flexDir='column' display='inline-flex' justifyContent='center' alignItems='center'>
-                            <Box display='inline-flex'>
-                                <Text as="h1" fontSize={['1.7','1.7em','2em','2em']} fontFamily='Oswald' color='#fff' textTransform='uppercase' marginBottom='10px'>
-                                    {data.title}
-                                </Text>
-                            </Box>
+                        <Box pos='absolute' role='button' top='0' left='0' boxSize='full' flexDir='column' display='inline-flex' justifyContent='center' alignItems='center'>
+                            
                             <Box display='inline-flex'>
                                 <Button as={GatsbyLink} p='0 50px' fontWeight='normal' colorScheme='yellow' to={`/video/${data.slugs}`}>
                                     WATCH NOW

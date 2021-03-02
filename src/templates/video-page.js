@@ -15,6 +15,7 @@ const VideoPage = (props) => {
     return (
         <>
             <Helmet>
+                <html lang="en" />
                 <meta charSet='utf-8' />
                 <title>{title}</title>
                 <meta 
@@ -30,13 +31,16 @@ const VideoPage = (props) => {
             </Helmet>
             <Header />
             
-            <Flex position='relative'  w='100%'   backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
+            <Flex position='relative'  w='100%'    backgroundImage={`url(${coverArt.file.url})`} backgroundPosition='center' backgroundSize='cover' >
                 
-                <Flex justifyContent='center'   w='100%'   fontFamily='Oswald'  color='#000' backgroundImage='linear-gradient(0deg, rgba(255,255,255,1) 69%, rgba(255,255,255,0) 85%)'>
+                <Flex justifyContent='center' as='main'   w='100%'   fontFamily='Oswald'  color='#000' backgroundColor='#fff'>
                     
-                    <Box w={['95%','95%','75%','75%']} marginTop={['32vh', '32vh', '20vh', '20vh']}>
-                        <Button pos='absolute' top={['215px','215px','125px','125px']} fontWeight='normal' textTransform='uppercase' as={GatsbyLink} to='../../' background='lightgrey'>Back to Videos</Button>
-                        <Text as='h1' fontSize='2.5rem'>{title}</Text>
+                    <Box w={['95%','95%','75%','75%']} marginTop={['23vh', '23vh', '15vh', '12vh']}>
+                        
+                        <Flex alignItems='center' justify='space-between'>
+                            <Text as='h1' fontSize='2.5rem'>{title}</Text>
+                            <Button  fontWeight='normal' textTransform='uppercase' as={GatsbyLink} to='../../' background='lightgrey'>Back to Videos</Button>
+                        </Flex>
                         <Divider borderColor='#777' />
                         
                         <Text as='p'>
@@ -85,7 +89,7 @@ const VideoPage = (props) => {
                                 {music && <ListItem p='5px' borderBottom='solid 1px #e9e9e9'>Music: {music.map(artist => artist).join(', ')}</ListItem>}
                             </List>
                         </Box>
-                        <Box paddingLeft={['0px','0px','0px','25px']} w={['100%','100%','100%','25%']} float='right'>
+                        <Box  paddingLeft={['0px','0px','0px','25px']} w={['100%','100%','100%','25%']} float='right'>
                             <Text as='h2' color='#666' fontSize='1.2rem' borderBottom='solid 1px #e9e9e9'>
                                 Chapters:
                             </Text>
@@ -106,7 +110,7 @@ const VideoPage = (props) => {
                                                 <Link textTransform='capitalize' pos='relative' as='button' _focus={{ boxShadow: 'none' }}  onClick={() => {
                                                     player.current.seekTo(timeInSecs);
                                                 }} display='inline-flex' boxSize='full'>
-                                                    {chapterName} <Box pos='absolute' right='0px' color='#999' top='0px'>{chapterTimeStamp}</Box>
+                                                    {chapterName} <Box pos='absolute' right='0px' color='#595959' top='0px'>{chapterTimeStamp}</Box>
                                                 </Link>
                                             </ListItem>
                                         )
@@ -121,9 +125,9 @@ const VideoPage = (props) => {
                 </Flex>
                 
             </Flex>
-            <Flex display='inline-flex' justifyContent='center' w='100%' fontFamily='Oswald' marginTop='25px' paddingBottom='25px'>
+            <Flex display='inline-flex' as='section' justifyContent='center' w='100%' fontFamily='Oswald' marginTop='25px' paddingBottom='25px'>
                 
-                <Box w={['95%','95%','75%','75%']} >
+                <Box as='aside' w={['95%','95%','75%','75%']} >
                     <Text as='h2' marginBottom='5px' fontSize='1.4rem'>You May Also Like:</Text>
                     <Videos />
                 </Box>
