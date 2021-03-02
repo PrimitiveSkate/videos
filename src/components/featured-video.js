@@ -19,7 +19,7 @@ export default function FeaturedVideo(){
                         chapters
                         slugs
                         coverArt {
-                            fluid(maxWidth: 900) {
+                            fluid(maxWidth: 1250) {
                                 ...GatsbyContentfulFluid
                             }
                         }
