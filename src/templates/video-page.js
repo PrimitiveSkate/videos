@@ -107,11 +107,12 @@ const VideoPage = (props) => {
                                         
                                         return (
                                             <ListItem cursor='pointer' className='timeStamp'  key={index} p={['0px','0px','5px','5px']} borderBottom='solid 1px #e9e9e9'>
-                                                <Link textTransform='capitalize' pos='relative' as='button' _focus={{ boxShadow: 'none' }}  onClick={() => {
-                                                    player.current.seekTo(timeInSecs);
-                                                }} display='inline-flex' boxSize='full'>
-                                                    {chapterName} <Box pos='absolute' right='0px' color='#595959' top='0px'>{chapterTimeStamp}</Box>
-                                                </Link>
+                                                <Button _hover={ { textDecoration:'underline' }}  fontWeight='lighter' display='inline-flex' alignItems='center' justifyContent='space-between' width='100%' background='none' onClick={() => {
+                                                        player.current.seekTo(timeInSecs);
+                                                    }}>
+                                                        <Box>{chapterName}</Box> <Box color='#666'>{chapterTimeStamp}</Box>
+                                                    
+                                                </Button>
                                             </ListItem>
                                         )
                                     })}
