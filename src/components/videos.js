@@ -14,7 +14,7 @@ export default function Videos(){
                         title
                         slugs
                         coverArt {
-                            fluid(maxWidth: 960) {
+                            fluid(maxWidth: 450) {
                                 ...GatsbyContentfulFluid
                             }
                         }

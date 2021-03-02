@@ -14,9 +14,8 @@ const VideoItem = props => {
                         <Box opacity='0.7' _hover={ {opacity:'1'}} width='100%' >
                             <Img 
                                 fluid={data.coverArt.fluid} 
-                                key={data.coverArt.fluid.src}
+                                key={data.id}
                                 alt={data.title}
-
                             />
                         </Box>
                         <Text as="h1" fontSize={['0.8em','0.9em','1.3em','1.3em']} fontFamily='Oswald' w='100%' id={`video-${data.id}`}>
