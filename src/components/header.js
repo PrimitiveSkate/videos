@@ -95,7 +95,7 @@ const Header = () =>{
                     <Link href='/' title="Home">
                         <Image src={Logo} w='200px' alignItems='center' alt='primitive video library logo' title='Primitive Vidoes'/>
                     </Link>
-                    <Button pos={['relative','relative','absolute','absolute']} target='_blank' colorScheme='yellow' top={['10px','10px','auto','auto']} right={['0','0','20px','20px']} fontSize='14px' textTransform='uppercase' fontWeight='normal'  as={GatsbyLink} to='https://primitiveskate.com'>
+                    <Button rel='noreferrer' pos={['relative','relative','absolute','absolute']} target='_blank' colorScheme='yellow' top={['10px','10px','auto','auto']} right={['0','0','20px','20px']} fontSize='14px' textTransform='uppercase' fontWeight='normal'  as={GatsbyLink} to='https://primitiveskate.com'>
                         Shop Primitiveskate.com
                     </Button>
                 </Flex>

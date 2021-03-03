@@ -17,6 +17,7 @@ const VideoItem = props => {
                                 fluid={data.coverArt.fluid} 
                                 key={data.id}
                                 alt={data.title}
+                                width='420'
                             />
                         </Box>
                         <Text as="h1" fontSize={['0.8em','0.9em','1.3em','1.3em']} fontFamily='Oswald' w='100%' id={`video-${data.id}`}>
