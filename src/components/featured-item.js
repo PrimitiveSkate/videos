@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import {Link as GatsbyLink} from 'gatsby';
 import React from 'react';
 import Img from "gatsby-image";
-import {Box,Button, Text, Flex,Link} from '@chakra-ui/react';
+import {Box,Button,  Flex} from '@chakra-ui/react';
 
 const FeaturedItem = props => {
     

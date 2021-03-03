@@ -12,6 +12,7 @@ const VideoItem = props => {
                 <Link _hover={ { textDecoration:'none' }} role='link' href={`/video/${data.slugs}`} display='inline-flex' width='100%' textTransform='uppercase'>
                     <Box fontFamily='Oswald' pos='relative' width='100%'>
                         <Box opacity='0.7' _hover={ {opacity:'1'}} width='100%' >
+                            
                             <Img 
                                 fluid={data.coverArt.fluid} 
                                 key={data.id}

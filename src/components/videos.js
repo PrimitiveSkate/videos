@@ -1,7 +1,7 @@
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import VideoItem from './video-item';
-import {Box, SimpleGrid} from '@chakra-ui/react';
+import {SimpleGrid} from '@chakra-ui/react';
 
 export default function Videos(){
     const data = useStaticQuery(
@@ -14,7 +14,7 @@ export default function Videos(){
                         title
                         slugs
                         coverArt {
-                            fluid(maxWidth: 450) {
+                            fluid(quality: 50, maxWidth: 420) {
                                 ...GatsbyContentfulFluid
                             }
                         }
