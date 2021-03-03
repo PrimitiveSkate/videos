@@ -56,7 +56,7 @@ const Header = () =>{
                                     
                                 }
                             />
-                            <Input id='searchVideo' background='#fff' marginBottom={['20px','20px', '0', '0']} value={query} onChange={search}  placeholder="Search Videos"/>
+                            <Input id='searchVideo' background='#fff' marginBottom={['20px','20px', '0', '0']} value={query} onChange={search} aria-label='search video'  placeholder="Search Videos"/>
                         </InputGroup>
                         <Box position='absolute' width='90%' maxHeight='50vh' overflowY='scroll' overflowX='hidden' background='white' zIndex="1111" borderRadius="5px" boxShadow="0 0 2px #999">
                             {
