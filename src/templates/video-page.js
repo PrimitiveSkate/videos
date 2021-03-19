@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import React, {useRef} from 'react';
 import ReactPlayer from 'react-player';
 import Videos from '../components/videos';
+import shuffle from 'lodash/shuffle';
+
 import {
   AspectRatio,
   Box,
@@ -22,7 +24,7 @@ import {Link as GatsbyLink, graphql} from 'gatsby';
 import {Helmet} from 'react-helmet';
 import {gql, useQuery} from '@apollo/client';
 
-const PRODUCT_COUNT = 4;
+const PRODUCT_COUNT = 16;
 
 const LIST_PRODUCTS = gql`
   fragment ProductFragment on Product {
@@ -106,13 +108,12 @@ function VideoProducts({tags}) {
   if (error) {
     return <Text color="red.500">{error.message}</Text>;
   }
-
+  const shuffledProducts = shuffle(data.defaultProducts.edges);
   const products = data.relevantProducts
-    ? data.relevantProducts.edges
-        .concat(data.defaultProducts.edges)
-        .slice(0, PRODUCT_COUNT)
-    : data.defaultProducts.edges;
+    ? shuffle(data.relevantProducts.edges).concat(shuffledProducts)
+    : shuffledProducts;
 
+  console.log(shuffle(products));
   return (
     <>
       <Flex
@@ -125,12 +126,17 @@ function VideoProducts({tags}) {
         marginTop="25px"
         paddingBottom="25px"
       >
-        <Box as="aside" w={['95%', '95%', '75%', '75%']}>
+        <Box
+          as="aside"
+          w={['95%', '95%', '75%', '75%']}
+          borderBottom="1px solid #999"
+          paddingBottom="50px"
+        >
           <Text as="h2" marginBottom="5px" fontSize="1.4rem" paddingTop="25px">
             Shop Related Products:
           </Text>
           <SimpleGrid w="100%" columns={['2', '2', '3', '4']} spacing={5}>
-            {products.map(product => (
+            {products.slice(0, 4).map(product => (
               <Flex
                 key={product.node.id}
                 flexGrow="1"
