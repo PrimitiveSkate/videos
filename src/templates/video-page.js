@@ -113,7 +113,6 @@ function VideoProducts({tags}) {
     ? shuffle(data.relevantProducts.edges).concat(shuffledProducts)
     : shuffledProducts;
 
-  console.log(shuffle(products));
   return (
     <>
       <Flex
@@ -155,7 +154,7 @@ function VideoProducts({tags}) {
                   <Box fontFamily="Oswald" pos="relative" width="100%">
                     <Box _hover={{textDecoration: 'underline'}} width="100%">
                       <Image
-                        src={`https://res.cloudinary.com/primitive-skate/image/fetch/w_300,f_auto,q_auto/${product.node.images.edges[0].node.src}`}
+                        src={`${product.node.images.edges[0].node.src}`}
                         key={product.node.id}
                         alt={product.node.title}
                       />
@@ -237,7 +236,6 @@ const VideoPage = props => {
         <link rel="shortcut icon" href={Favicon} />
       </Helmet>
       <Header />
-
       <Flex
         position="relative"
         w="100%"
