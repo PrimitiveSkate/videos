@@ -32,8 +32,9 @@ const LIST_PRODUCTS = gql`
     title
     tags
     onlineStoreUrl
+    totalInventory
     availableForSale
-    images(first: 1) {
+    images(first: 10) {
       edges {
         node {
           src
@@ -46,6 +47,13 @@ const LIST_PRODUCTS = gql`
       }
       minVariantPrice {
         amount
+      }
+    }
+    variants(first: 1) {
+      edges {
+        node {
+          price
+        }
       }
     }
   }
@@ -61,7 +69,7 @@ const LIST_PRODUCTS = gql`
     }
     defaultProducts: products(
       first: $first
-      query: "available_for_sale:true AND spring21"
+      query: "available_for_sale:true AND summer21"
     ) {
       edges {
         node {
@@ -83,7 +91,6 @@ function VideoProducts({tags}) {
       hasTags
     }
   });
-
   if (loading) {
     return (
       <Flex
@@ -173,7 +180,7 @@ function VideoProducts({tags}) {
                         fontSize="18px"
                         color="#666"
                       >
-                        ${product.node.priceRange.minVariantPrice.amount}
+                        ${product.node.variants.edges[0].node.price} USD
                       </Text>
                     </Box>
                   </Box>
