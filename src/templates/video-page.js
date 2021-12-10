@@ -299,19 +299,17 @@ const VideoPage = props => {
                   width="100%"
                   height="100%"
                   url={videoUrl.videoUrl}
+                  playing
                   config={{
                     vimeo: {
                       playerOptions: {
                         controls: true,
-                        title: false,
-                        autoplay: true
+                        title: false
                       }
                     },
                     youtube: {
                       playerVars: {
-                        autoplay: 1,
-                        controls: 1,
-                        responsive: true
+                        controls: 1
                       }
                     }
                   }}
@@ -398,6 +396,7 @@ const VideoPage = props => {
                           background="none"
                           onClick={() => {
                             player.current.seekTo(timeInSecs);
+                            player.current.play();
                           }}
                         >
                           <Box>{chapterName}</Box>{' '}
