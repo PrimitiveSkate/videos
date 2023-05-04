@@ -101,7 +101,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: 'https://primitiveskate.myshopify.com/api/2021-01/graphql.json',
+        uri: 'https://primitiveskate.myshopify.com/api/2023-04/graphql.json',
         headers: {
           'X-Shopify-Storefront-Access-Token':
             '1cde0dbc2c658b4ea4021dbb5fe0006d',
