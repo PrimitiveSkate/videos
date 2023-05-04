@@ -52,9 +52,7 @@ const LIST_PRODUCTS = gql`
     variants(first: 1) {
       edges {
         node {
-          priceV2 {
-            amount
-          }
+          price
         }
       }
     }
